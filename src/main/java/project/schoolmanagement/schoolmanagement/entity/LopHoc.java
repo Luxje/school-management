@@ -17,5 +17,15 @@ public class LopHoc {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "")
+    @Column(name = "ten_lop")
+    private String tenLop;
+
+    @Column(name = "khoi")
+    private Integer khoi;
+
+    @Column(name = "si_so")
+    private Integer siSo;
+
+    @Column(name = "id_giao_vien_chu_nhiem")
+    private Integer idGiaoVienChuNhiem;
 }

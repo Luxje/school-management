@@ -5,6 +5,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+import project.schoolmanagement.schoolmanagement.entity.HocSinh;
+import project.schoolmanagement.schoolmanagement.entity.LopHoc;
 
 import java.util.Properties;
 
@@ -22,7 +24,9 @@ public class HibernateConfig {
         properties.put(Environment.PASS, "12345678");
         properties.put(Environment.SHOW_SQL, "true");
 
-        // conf.addAnnotatedClass(BacSi.class);
+         conf.addAnnotatedClass(LopHoc.class);
+         conf.addAnnotatedClass(HocSinh.class);
+//         conf.addAnnotatedClass(HocSinh.class);
         conf.setProperties(properties);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
