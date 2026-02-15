@@ -2,31 +2,27 @@ package project.schoolmanagement.schoolmanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import project.schoolmanagement.schoolmanagement.repository.RepositoryGiaoVienChuNhiem;
-import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
-import project.schoolmanagement.schoolmanagement.repository.RepositoryLopHoc;
+import project.schoolmanagement.schoolmanagement.LoginCredentials.HocSinhLogin;
+import project.schoolmanagement.schoolmanagement.service.HocSinhService;
 
 @Controller
 @RequestMapping(name ="/hocSinh")
 public class HocSinhController {
 
-    @Autowired
-    private RepositoryHocSinh repositoryHocSinh;
+    private String email;
 
     @Autowired
-    private RepositoryLopHoc repositoryLopHoc;
+    private HocSinhService hocSinhService;
 
-    @Autowired
-    private RepositoryGiaoVienChuNhiem repositoryGiaoVienChuNhiem;
+//    @PostMapping("/hocSinhLogin")
+//    public String hocSinhLogin(@ModelAttribute("hocSinhLogin") HocSinhLogin hocSinhLogin, Model model) {
+//        email = hocSinhLogin.getEmail();
+//        String password = hocSinhLogin.getMatKhau();
+//    }
 
-
-    @GetMapping("/login")
-    public String dangNhap(){
-        return "hocSinhDangNhap";
-    }
-
-//    @GetMapping("/logging")
-//    public String
 }
