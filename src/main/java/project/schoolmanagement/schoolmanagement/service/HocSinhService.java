@@ -20,7 +20,7 @@ public class HocSinhService {
 
     public HocSinh getById(Integer id) {
         return repositoryHocSinh.findById(id)
-                .orElseThrow(() -> new project.schoolmanagement.schoolmanagement.exception.ResourceNotFoundException("Học sinh " + id + " không tồn tại"));
+                .orElseThrow(() -> new project.schoolmanagement.schoolmanagement.service.ResourceNotFoundException("Học sinh " + id + " không tồn tại"));
     }
 
 }
