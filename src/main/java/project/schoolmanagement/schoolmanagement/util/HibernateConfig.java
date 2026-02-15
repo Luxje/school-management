@@ -5,6 +5,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+import project.schoolmanagement.schoolmanagement.entity.GiaoVienChuNhiem;
 import project.schoolmanagement.schoolmanagement.entity.HocSinh;
 import project.schoolmanagement.schoolmanagement.entity.LopHoc;
 
@@ -26,7 +27,7 @@ public class HibernateConfig {
 
          conf.addAnnotatedClass(LopHoc.class);
          conf.addAnnotatedClass(HocSinh.class);
-//         conf.addAnnotatedClass(HocSinh.class);
+         conf.addAnnotatedClass(GiaoVienChuNhiem.class);
         conf.setProperties(properties);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
