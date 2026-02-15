@@ -24,8 +24,8 @@ public class HocSinhService {
                 .orElseThrow(() -> new RuntimeException("Student not found with ID: " + id));
     }
 
-    public Boolean validateLogin(String email, String password) {
-        HocSinh hocSinh = repositoryHocSinh.findHocSinhByEmail(email);
-    }
+//    public Boolean validateLogin(String email, String password) {
+//       HocSinh hocSinh = repositoryHocSinh.findHocSinhByEmail(email);
+//    }
 
 }

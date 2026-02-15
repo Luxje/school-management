@@ -19,11 +19,10 @@ public class HocSinhController {
     @Autowired
     private HocSinhService hocSinhService;
 
-    @PostMapping("/hocSinhLogin")
-    public String hocSinhLogin(@ModelAttribute("hocSinhLogin") HocSinhLogin hocSinhLogin, Model model) {
-        email = hocSinhLogin.getEmail();
-        String password = hocSinhLogin.getMatKhau();
-        if()
-    }
+//    @PostMapping("/hocSinhLogin")
+//    public String hocSinhLogin(@ModelAttribute("hocSinhLogin") HocSinhLogin hocSinhLogin, Model model) {
+//        email = hocSinhLogin.getEmail();
+//        String password = hocSinhLogin.getMatKhau();
+//    }
 
 }
