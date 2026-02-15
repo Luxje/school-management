@@ -31,6 +31,12 @@ public class HocSinh {
     @Column(name = "dia_chi")
     private String diaChi;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "mat_khau")
+    private String matKhau;
+
     @ManyToOne
     @JoinColumn(name = "id_lop_hoc", referencedColumnName = "id")
     private LopHoc lopHoc;
