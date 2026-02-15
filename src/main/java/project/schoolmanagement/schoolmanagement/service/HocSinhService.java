@@ -19,17 +19,10 @@ public class HocSinhService {
         return hocSinhList;
     }
 
-//    public HocSinh getById(Integer id) {
-//        return repositoryHocSinh.findById(id) // <--- Make sure (id) is right here
-//                .orElseThrow(() -> new RuntimeException("Student not found with ID: " + id));
-//    }
-
-//    public Boolean validateLogin(String email, String password) {
-//       HocSinh hocSinh = repositoryHocSinh.findHocSinhByEmail(email);
-//    }
-
-
-
+    public HocSinh getById(Integer id) {
+        return repositoryHocSinh.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found with ID: " + id));
+    }
 
 
 }
