@@ -19,8 +19,8 @@ public class HocSinhService {
     }
 
     public HocSinh getById(Integer id) {
-        return repositoryHocSinh.findById(id)
-                .orElseThrow(() -> new project.schoolmanagement.schoolmanagement.exception.ResourceNotFoundException("Học sinh " + id + " không tồn tại"));
+        return repositoryHocSinh.findById(id) // <--- Make sure (id) is right here
+                .orElseThrow(() -> new RuntimeException("Student not found with ID: " + id));
     }
 
 }
