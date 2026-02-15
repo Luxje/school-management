@@ -40,4 +40,5 @@ public class HocSinh {
     @ManyToOne
     @JoinColumn(name = "id_lop_hoc", referencedColumnName = "id")
     private LopHoc lopHoc;
+
 }
