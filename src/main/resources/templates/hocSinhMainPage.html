@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPT Polytechnic Dashboard Clone</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" alt="Logo" width="150">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fas fa-bell"></i> Thông báo và tin tức</a></li>
+                <li><a href="#"><i class="fas fa-check-square"></i> Điểm danh</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Lịch học</a></li>
+                <li><a href="#"><i class="fas fa-book-open"></i> Điểm</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i> Khen thưởng/Kỷ luật</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Đợt thu bổ sung hồ sơ</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Ví sinh viên</a></li>
+                <li><a href="#"><i class="fas fa-headset"></i> Dịch vụ trực tuyến</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="breadcrumb">Trang chủ / <i class="fas fa-home"></i></div>
+            <div class="user-info">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-bell"></i>
+                <span>Xin chào, <strong>Binh</strong></span>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <section class="card">
+                <h3>Thông tin học tập</h3>
+                <div class="news-item highlight">V/v THÔNG BÁO VỀ KẾ HOẠCH THI BLOCK 1 - KỲ SP 2026</div>
+                <div class="news-item highlight">[CTSV] QĐ 740/QĐ-CĐFPL Ban hành quy chế...</div>
+                <div class="news-item">V/v Kế hoạch tổ chức thi lại ĐỢT 2...</div>
+            </section>
+
+            <section class="card">
+                <h3>Thông tin hoạt động</h3>
+                <div class="news-item">[GDQP] Thông báo về việc học GDQP-AN tháng 8 năm 2022</div>
+                <button class="btn-more">Xem Thêm</button>
+            </section>
+
+            <section class="card">
+                <h3>Thông tin học phí</h3>
+                <div class="news-item">V/V hệ thống dừng xuất hóa đơn để cập nhật...</div>
+                <div class="news-item">THÔNG BÁO VỀ CÁC KÊNH THU HỌC PHÍ...</div>
+            </section>
+
+            <section class="card">
+                <h3>Thông tin việc làm</h3>
+                <div class="news-item">[QHDN] TUYỂN DỤNG KOL/CREATOR THỂ THAO...</div>
+                <div class="news-item">[QHDN] TUYỂN DỤNG THỰC TẬP SINH THIẾT KẾ...</div>
+            </section>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

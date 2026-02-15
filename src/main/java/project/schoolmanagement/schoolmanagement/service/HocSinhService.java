@@ -2,11 +2,13 @@ package project.schoolmanagement.schoolmanagement.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project.schoolmanagement.schoolmanagement.LoginCredentials.HocSinhLogin;
 import project.schoolmanagement.schoolmanagement.entity.HocSinh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 
 import javax.xml.transform.sax.SAXResult;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HocSinhService {
@@ -22,6 +24,15 @@ public class HocSinhService {
     public HocSinh getById(Integer id) {
         return repositoryHocSinh.findById(id)
                 .orElseThrow(() -> new RuntimeException("Student not found with ID: " + id));
+    }
+
+    public Boolean validateLogin(String email, String password) {
+        HocSinh hocSinh = repositoryHocSinh.findHocSinhByEmail(email);
+        if(hocSinh != null && hocSinh.getMatKhau().equals(password)) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
 
