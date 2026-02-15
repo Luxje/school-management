@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface RepositoryHocSinh extends CrudRepository<HocSinh, Integer> {
     Optional<HocSinh> findHocSinhById(Integer id);
+
+    Optional<HocSinh> findHocSinhByEmail(String email);
 }
