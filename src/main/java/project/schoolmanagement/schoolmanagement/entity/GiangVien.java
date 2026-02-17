@@ -11,10 +11,11 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "student")
+@Table(name = "teacher")
 @AllArgsConstructor
 @NoArgsConstructor
-public class HocSinh {
+
+public class GiangVien {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +24,8 @@ public class HocSinh {
     @Column(name = "fullname")
     private String fullName;
 
-    @Column(name = "birthday")
-    private Date birthDay;
-
-    @Column(name = "class_name")
-    private String className;
+    @Column(name = "phone")
+    private String phoneNumber;
 
     @Column(name = "email")
     private String email;
@@ -35,4 +33,6 @@ public class HocSinh {
     @OneToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
     private Account account;
+
+
 }
