@@ -1,9 +1,9 @@
 package project.schoolmanagement.schoolmanagement.LoginCredentials;
 
-public class HocSinhLogin {
+public class AccountLogin {
     private String email;
 
-    private String matKhau;
+    private String password;
 
     public String getEmail() {
         return email;
@@ -13,13 +13,11 @@ public class HocSinhLogin {
         this.email = email;
     }
 
-    public String getMatKhau() {
-        return matKhau;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
+    public void setPassword(String password) {
+        this.password = password;
     }
-
-
 }

@@ -8,36 +8,36 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import project.schoolmanagement.schoolmanagement.LoginCredentials.AccountLogin;
-import project.schoolmanagement.schoolmanagement.service.HocSinhService;
+import project.schoolmanagement.schoolmanagement.service.GiangVienService;
 
 @Controller
-@RequestMapping("/hocSinh")
-public class HocSinhController {
-
+@RequestMapping("/giangVien")
+public class GiangVienController {
 
     @Autowired
-    private HocSinhService hocSinhService;
+    private GiangVienService giangVienService;
 
-    @PostMapping("/hocSinhLogin")
-    public String hocSinhLogin(@ModelAttribute("hocSinhLogin") AccountLogin accountLogin, Model model) {
+    @PostMapping("/giangVienLogin")
+    public String giangVienLogin(@ModelAttribute("giangVienLogin") AccountLogin accountLogin, Model model) {
         String email = accountLogin.getEmail();
         String password = accountLogin.getPassword();
-        if(hocSinhService.validateLogin(email,password) == true) {
-            return "redirect:/hocSinh/hocSinhMainPage";
+        if(giangVienService.validateLogin(email,password) == true) {
+            return "redirect:/giangVien/giangVienMainPage";
         }else {
             model.addAttribute("error", "Invalid Email or Password");
-            return "hocSinhLogin";
+            return "giangVienLogin";
         }
     }
 
-    @GetMapping("/hocSinhMainPage")
-    public String directHocSinhPage() {
-        return "hocSinhMainPage";
+    @GetMapping("/giangVienMainPage")
+    public String directGiangVienPage() {
+        return "giangVienMainPage";
     }
 
-    @GetMapping("/hocSinhLogin")
+    @GetMapping("/giangVienLogin")
     private String directLogin(Model model) {
-        model.addAttribute("hocSinhLogin", new AccountLogin());
-        return "hocSinhLogin";
+        model.addAttribute("giangVienLogin", new AccountLogin());
+        return "giangVienLogin";
     }
+
 }
