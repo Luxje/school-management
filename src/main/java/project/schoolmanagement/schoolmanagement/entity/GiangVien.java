@@ -27,8 +27,6 @@ public class GiangVien {
     @Column(name = "phone")
     private String phoneNumber;
 
-    @Column(name = "email")
-    private String email;
 
     @OneToOne
     @JoinColumn(name = "email", referencedColumnName = "email")

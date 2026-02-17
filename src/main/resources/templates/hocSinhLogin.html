@@ -6,7 +6,7 @@
     <title>Học sinh đâng nhập</title>
 </head>
 <body>
-<form th:action="@{/hocSinh/hocSinhLogin}" th:object="${HocSinhLogin}" method="post">
+<form th:action="@{/hocSinh/hocSinhLogin}" th:object="${hocSinhLogin}" method="post">
 
     <div>
         <label>Email:</label>
@@ -15,7 +15,7 @@
 
     <div>
         <label>Password:</label>
-        <input type="password" th:field="*{matKhau}" required />
+        <input type="password" th:field="*{password}" required />
     </div>
 
     <button type="submit">Login</button>
