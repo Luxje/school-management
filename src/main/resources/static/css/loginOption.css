@@ -1,0 +1,98 @@
+/* Minimalist Professional Theme */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background-color: #ffffff;
+    color: #111827;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.selection-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    border-color: #111827;
+    background-color: #f9fafb;
+}
+
+.label {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.description {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.arrow {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    transition: transform 0.2s ease;
+}
+
+.card:hover .arrow {
+    color: #111827;
+    transform: translateX(5px);
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.footer a {
+    color: #111827;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
