@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Đào Tạo - Đăng Nhập</title>
+    <link rel="stylesheet" th:href="@{/css/loginOption.css}">
+</head>
+<body>
+
+<main class="login-container">
+    <header class="header">
+        <h1 th:text="#{login.title}">Cổng Đăng Nhập</h1>
+        <p th:text="#{login.subtitle}">Chọn vai trò của bạn để tiếp tục truy cập hệ thống</p>
+    </header>
+
+    <div class="selection-grid">
+        <a th:href="@{/login/student}" class="card">
+            <div class="card-content">
+                <span class="label">Học Viên</span>
+                <span class="description">Tham gia lớp học và hoàn thành bài tập.</span>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+
+        <a th:href="@{/login/teacher}" class="card">
+            <div class="card-content">
+                <span class="label">Giảng Viên</span>
+                <span class="description">Quản lý giáo trình và theo dõi tiến độ lớp.</span>
+            </div>
+            <div class="arrow">→</div>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <p>Gặp sự cố? <a th:href="@{/support}">Liên hệ hỗ trợ kỹ thuật</a></p>
+    </footer>
+</main>
+
+</body>
+</html>

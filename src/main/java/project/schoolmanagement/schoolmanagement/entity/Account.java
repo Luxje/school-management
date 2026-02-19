@@ -23,7 +23,6 @@ public class Account {
     private String pass;
     private String position;
 
-    // Optional: Bi-directional mapping
     @OneToOne(mappedBy = "account")
     private GiangVien teacher;
 
