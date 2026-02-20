@@ -40,4 +40,21 @@ public class HocSinhController {
         model.addAttribute("hocSinhLogin", new AccountLogin());
         return "hocSinhLogin";
     }
+
+    @GetMapping("hocSinhBangDiem")
+    private String directHocSinhBangDiem() {
+        return "hocSinhBangDiem";
+    }
+
+    @GetMapping("hocSinhDiemDanh")
+    private String directHocSinhDiemDanh() {
+        return "hocSinhDiemDanh";
+    }
+
+    @GetMapping("hocSinhLichHoc")
+    private String directHocSinhLichHoc() {
+        return "hocSinhLichHoc";
+    }
+
+    
 }
