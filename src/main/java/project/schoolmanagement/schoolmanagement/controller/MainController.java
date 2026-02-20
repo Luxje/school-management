@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mainController")
 public class MainController {
 
-    @GetMapping("/directLoginOption")
+    @GetMapping("/loginOption")
     public String directLoginOption() {
         return "loginOption";
+    }
+
+    @GetMapping("/hocSinhBangDiem")
+    public String directHocSinhBangDiem() {
+        return "hocSinhBangDiem";
     }
 }
