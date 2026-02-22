@@ -21,6 +21,7 @@
             <a href="#" class="nav-link"><i class="fas fa-book"></i> Điểm</a>
             <a href="#" class="nav-link"><i class="fas fa-award"></i> Khen thưởng/Kỷ luật</a>
             <a href="#" class="nav-link"><i class="fas fa-wallet"></i> Ví sinh viên</a>
+            <a href="#" class="nav-link"><i class="fas fa-wallet"></i> Dịch vụ trực tuyến</a>
         </nav>
     </aside>
 
@@ -47,13 +48,13 @@
                 1: Lập trình web nâng cao (Java) (JAV201) - SD20309
             </div>
 
-            <div class="table-actions">
-                <button class="btn-tool">Print</button>
-                <button class="btn-tool">Copy</button>
-                <button class="btn-tool">Excel</button>
-                <button class="btn-tool">CSV</button>
-                <button class="btn-tool">PDF</button>
-            </div>
+<!--            <div class="table-actions">-->
+<!--                <button class="btn-tool">Print</button>-->
+<!--                <button class="btn-tool">Copy</button>-->
+<!--                <button class="btn-tool">Excel</button>-->
+<!--                <button class="btn-tool">CSV</button>-->
+<!--                <button class="btn-tool">PDF</button>-->
+<!--            </div>-->
 
             <table class="grade-table">
                 <thead>
@@ -66,9 +67,9 @@
                 </thead>
                 <tbody>
                     <tr th:each="d : ${lstBangDiem}">
+                        <td th:text="${d.monHoc}"></td>
                         <td th:text="${d.tenDauDiem}"></td>
                         <td th:text="${d.trongSo}"></td>
-                        <td th:text="${d.monHoc}"></td>
                         <td th:text="${d.diem}"></td>
                     </tr>
                 </tbody>
