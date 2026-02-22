@@ -58,30 +58,19 @@
             <table class="grade-table">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Môn học</th>
                     <th>Tên đầu điểm</th>
                     <th>Trọng số (%)</th>
                     <th>Điểm</th>
-                    <th>Ghi chú</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr><td>1</td><td>Đánh giá Assignment GĐ 1</td><td>10</td><td>5.0</td><td></td></tr>
-                <tr><td>2</td><td>Lab 1</td><td>3.5</td><td>5.0</td><td></td></tr>
-                <tr><td>3</td><td>Lab 2</td><td>3.5</td><td>5.0</td><td></td></tr>
-                <tr><td>4</td><td>Lab 3</td><td>3.5</td><td>5.0</td><td></td></tr>
-                <tr><td>5</td><td>Lab 4</td><td>3.5</td><td>5.0</td><td></td></tr>
-                <tr><td>6</td><td>Quiz 1</td><td>3</td><td>8.0</td><td></td></tr>
-                <tr><td>7</td><td>Quiz 2</td><td>3</td><td>7.0</td><td></td></tr>
-                <tr class="summary-row">
-                    <td colspan="3">
-                        <div>Điểm trung bình: <span class="red-text">1.7</span></div>
-                        <div>Điểm TB quá trình: <span class="red-text">5.5</span></div>
-                    </td>
-                    <td colspan="2">
-                        Trạng thái: <span class="status-badge">Studying</span>
-                    </td>
-                </tr>
+                    <tr th:each="d : ${lstBangDiem}">
+                        <td th:text="${d.tenDauDiem}"></td>
+                        <td th:text="${d.trongSo}"></td>
+                        <td th:text="${d.monHoc}"></td>
+                        <td th:text="${d.diem}"></td>
+                    </tr>
                 </tbody>
             </table>
         </section>

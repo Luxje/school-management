@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface RepositoryHocSinh extends CrudRepository<HocSinh, Integer> {
     HocSinh findHocSinhByAccountEmail(String email);
+
 }

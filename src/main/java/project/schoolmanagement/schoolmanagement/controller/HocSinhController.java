@@ -1,38 +1,38 @@
 package project.schoolmanagement.schoolmanagement.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import project.schoolmanagement.schoolmanagement.LoginCredentials.AccountLogin;
+import project.schoolmanagement.schoolmanagement.entity.Diem;
 import project.schoolmanagement.schoolmanagement.service.HocSinhService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/hocSinh")
+@SessionAttributes("idHocSinh")
 public class HocSinhController {
 
 
     @Autowired
     private HocSinhService hocSinhService;
 
+
+
     @PostMapping("/hocSinhLogin")
-    public String hocSinhLogin(@ModelAttribute("hocSinhLogin") AccountLogin accountLogin, Model model) {
-        String email = accountLogin.getEmail();
-        String password = accountLogin.getPassword();
-        if(hocSinhService.validateLogin(email,password) == true) {
+    public String hocSinhLogin(@RequestParam("hocSinhEmail") String email, @RequestParam("password") String password, HttpSession httpSession, Model model) {
+        if(hocSinhService.validateLogin(email,password)) {
+            httpSession.setAttribute("currentHocSinhEmail", email);
+            httpSession.setAttribute("currentHocSinhId", email);
+
             return "redirect:/hocSinh/hocSinhMainPage";
         }else {
             model.addAttribute("error", "Invalid Email or Password");
             return "hocSinhLogin";
         }
-    }
-
-    @GetMapping("/hocSinhMainPage")
-    public String directHocSinhPage() {
-        return "hocSinhMainPage";
     }
 
     @GetMapping("/hocSinhLogin")
@@ -41,10 +41,17 @@ public class HocSinhController {
         return "hocSinhLogin";
     }
 
+    @GetMapping("/hocSinhMainPage")
+    public String directHocSinhPage() {
+        return "hocSinhMainPage";
+    }
+
+
     @GetMapping("/hocSinhBangDiem")
-    private String directHocSinhBangDiem() {
-
-
+    private String directHocSinhBangDiem(HttpSession httpSession, Model model) {
+        String email = (String) httpSession.getAttribute("currentHocSinhEmail");
+        //List<Diem> lstDiem = hocSinhService.getAllDiemHocSinh(email);
+//        model.addAttribute("lstBangDiem", lstDiem);
         return "hocSinhBangDiem";
     }
 
