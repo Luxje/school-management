@@ -41,17 +41,19 @@ public class HocSinhController {
         return "hocSinhLogin";
     }
 
-    @GetMapping("hocSinhBangDiem")
+    @GetMapping("/hocSinhBangDiem")
     private String directHocSinhBangDiem() {
+
+
         return "hocSinhBangDiem";
     }
 
-    @GetMapping("hocSinhDiemDanh")
+    @GetMapping("/hocSinhDiemDanh")
     private String directHocSinhDiemDanh() {
         return "hocSinhDiemDanh";
     }
 
-    @GetMapping("hocSinhLichHoc")
+    @GetMapping("/hocSinhLichHoc")
     private String directHocSinhLichHoc() {
         return "hocSinhLichHoc";
     }
