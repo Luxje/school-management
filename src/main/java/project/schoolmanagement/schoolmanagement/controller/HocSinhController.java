@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import project.schoolmanagement.schoolmanagement.LoginCredentials.AccountLogin;
 import project.schoolmanagement.schoolmanagement.entity.Diem;
+import project.schoolmanagement.schoolmanagement.entity.HocSinh;
+import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 import project.schoolmanagement.schoolmanagement.service.HocSinhService;
 
 import java.util.List;
@@ -20,13 +22,17 @@ public class HocSinhController {
     @Autowired
     private HocSinhService hocSinhService;
 
+    @Autowired
+    private RepositoryHocSinh repositoryHocSinh;
+
 
 
     @PostMapping("/hocSinhLogin")
-    public String hocSinhLogin(@RequestParam("hocSinhEmail") String email, @RequestParam("password") String password, HttpSession httpSession, Model model) {
+    public String hocSinhLogin(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession httpSession, Model model) {
         if(hocSinhService.validateLogin(email,password)) {
-            httpSession.setAttribute("currentHocSinhEmail", email);
-            httpSession.setAttribute("currentHocSinhId", email);
+            HocSinh hs = repositoryHocSinh.findHocSinhByAccountEmail(email);
+            Integer currentHocSinhId = hs.getId();
+            httpSession.setAttribute("currentHocSinhId", currentHocSinhId);
 
             return "redirect:/hocSinh/hocSinhMainPage";
         }else {
@@ -42,16 +48,20 @@ public class HocSinhController {
     }
 
     @GetMapping("/hocSinhMainPage")
-    public String directHocSinhPage() {
+    public String directHocSinhPage(HttpSession httpSession, Model model) {
+        Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
+        HocSinh hs = hocSinhService.getById(id);
+        model.addAttribute("hocSinh", hs);
+
         return "hocSinhMainPage";
     }
 
 
     @GetMapping("/hocSinhBangDiem")
     private String directHocSinhBangDiem(HttpSession httpSession, Model model) {
-        String email = (String) httpSession.getAttribute("currentHocSinhEmail");
-        //List<Diem> lstDiem = hocSinhService.getAllDiemHocSinh(email);
-//        model.addAttribute("lstBangDiem", lstDiem);
+        Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
+        List<Diem> lstDiem = hocSinhService.getAllDiemHocSinh(id);
+        model.addAttribute("lstBangDiem", lstDiem);
         return "hocSinhBangDiem";
     }
 

@@ -29,6 +29,9 @@ public class HocSinh {
     @Column(name = "class_name")
     private String className;
 
+    public String getFullName() {
+        return fullName;
+    }
 
     @OneToOne
     @JoinColumn(name = "email", referencedColumnName = "email")
