@@ -3,8 +3,10 @@ package project.schoolmanagement.schoolmanagement.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.schoolmanagement.schoolmanagement.entity.Diem;
+import project.schoolmanagement.schoolmanagement.entity.DiemDanh;
 import project.schoolmanagement.schoolmanagement.entity.HocSinh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryDiem;
+import project.schoolmanagement.schoolmanagement.repository.RepositoryDiemDanh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 
 import java.util.List;
@@ -17,6 +19,9 @@ public class HocSinhService {
 
     @Autowired
     private RepositoryDiem repositoryDiem;
+
+    @Autowired
+    private RepositoryDiemDanh repositoryDiemDanh;
 
     public List<HocSinh> getAll() {
         List<HocSinh> hocSinhList = (List<HocSinh>)this.repositoryHocSinh.findAll();
@@ -40,5 +45,10 @@ public class HocSinhService {
     public List<Diem> getAllDiemHocSinh(Integer id) {
         List<Diem> lstDiem = repositoryDiem.findDiemByHocSinh_Id(id);
         return lstDiem;
+    }
+
+    public List<DiemDanh> getAllDiemDanhById(Integer id) {
+        List<DiemDanh> lstDiemDanh = repositoryDiemDanh.findByHocSinh_Id(id);
+        return lstDiemDanh;
     }
 }

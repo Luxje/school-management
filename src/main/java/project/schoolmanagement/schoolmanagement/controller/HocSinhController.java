@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import project.schoolmanagement.schoolmanagement.LoginCredentials.AccountLogin;
 import project.schoolmanagement.schoolmanagement.entity.Diem;
+import project.schoolmanagement.schoolmanagement.entity.DiemDanh;
 import project.schoolmanagement.schoolmanagement.entity.HocSinh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 import project.schoolmanagement.schoolmanagement.service.HocSinhService;
@@ -62,11 +63,16 @@ public class HocSinhController {
         Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
         List<Diem> lstDiem = hocSinhService.getAllDiemHocSinh(id);
         model.addAttribute("lstBangDiem", lstDiem);
+
         return "hocSinhBangDiem";
     }
 
     @GetMapping("/hocSinhDiemDanh")
-    private String directHocSinhDiemDanh() {
+    private String directHocSinhDiemDanh(HttpSession httpSession, Model model) {
+        Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
+        List<DiemDanh> lstDiemDanh = hocSinhService.getAllDiemDanhById(id);
+        model.addAttribute("lstDiemDanh", lstDiemDanh);
+
         return "hocSinhDiemDanh";
     }
 
@@ -75,5 +81,9 @@ public class HocSinhController {
         return "hocSinhLichHoc";
     }
 
+    @GetMapping("/hocSinhBoSungHoSo")
+    private String directHocSinhBoSungHoSo() {
+        return "hocSinhBoSungHoSo";
+    }
     
 }
