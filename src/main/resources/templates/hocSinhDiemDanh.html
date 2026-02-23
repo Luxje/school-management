@@ -1,10 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Điểm danh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điểm danh sinh viên - FPT Polytechnic</title>
+    <link rel="stylesheet" th:href="@{/css/hocSinhBangDiem.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+<div class="wrapper">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="https://ap.poly.edu.vn/images/logo.png" alt="FPT Poly Logo" width="150">
+        </div>
+        <nav>
+            <a href="#" class="nav-link active"><i class="fas fa-bell"></i> Thông báo và tin tức</a>
+            <a href="#" class="nav-link"><i class="fas fa-check"></i> Điểm danh</a>
+            <a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Lịch học</a>
+            <a href="#" class="nav-link"><i class="fas fa-book"></i> Điểm</a>
+            <a href="#" class="nav-link"><i class="fas fa-award"></i> Khen thưởng/Kỷ luật</a>
+            <a href="#" class="nav-link"><i class="fas fa-wallet"></i> Ví sinh viên</a>
+            <a href="#" class="nav-link"><i class="fas fa-wallet"></i> Dịch vụ trực tuyến</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="top-bar">
+            <div class="breadcrumb">Bảng điểm theo kỳ / <i class="fas fa-home"></i> • Điểm</div>
+            <div class="user-meta">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-bell"></i>
+                <span>Xin chào, <strong>Binh</strong></span>
+            </div>
+        </header>
+
+        <section class="grade-container">
+            <div class="filter-section">
+                <label>Học kỳ</label>
+                <select class="form-control">
+                    <option>Spring 2026</option>
+                    <option>Fall 2025</option>
+                </select>
+            </div>
+
+            <div class="subject-header">
+                1: Lập trình web nâng cao (Java) (JAV201) - SD20309
+            </div>
+
+            <!--            <div class="table-actions">-->
+            <!--                <button class="btn-tool">Print</button>-->
+            <!--                <button class="btn-tool">Copy</button>-->
+            <!--                <button class="btn-tool">Excel</button>-->
+            <!--                <button class="btn-tool">CSV</button>-->
+            <!--                <button class="btn-tool">PDF</button>-->
+            <!--            </div>-->
+
+            <table class="grade-table">
+                <thead>
+                <tr>
+                    <th>Môn học</th>
+                    <th>Ngày học</th>
+                    <th>Trạng thái</th>
+                    <th>Ghi chú</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="d : ${lstDiemDanh}">
+                    <td th:text="${d.monHoc}"></td>
+                    <td th:text="${d.ngayHoc}"></td>
+                    <td th:text="${d.trangThai}"></td>
+                    <td th:text="${d.ghiChu}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
 </body>
 </html>
