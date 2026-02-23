@@ -78,6 +78,7 @@ public class HocSinhController {
 
     @GetMapping("/hocSinhLichHoc")
     private String directHocSinhLichHoc() {
+
         return "hocSinhLichHoc";
     }
 
