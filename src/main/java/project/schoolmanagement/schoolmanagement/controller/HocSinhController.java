@@ -9,6 +9,7 @@ import project.schoolmanagement.schoolmanagement.LoginCredentials.AccountLogin;
 import project.schoolmanagement.schoolmanagement.entity.Diem;
 import project.schoolmanagement.schoolmanagement.entity.DiemDanh;
 import project.schoolmanagement.schoolmanagement.entity.HocSinh;
+import project.schoolmanagement.schoolmanagement.entity.LichHoc;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 import project.schoolmanagement.schoolmanagement.service.HocSinhService;
 
@@ -77,9 +78,11 @@ public class HocSinhController {
     }
 
     @GetMapping("/hocSinhLichHoc")
-    private String directHocSinhLichHoc() {
-
-        return "hocSinhLichHoc";
+    private String directHocSinhLichHoc(HttpSession httpSession, Model model) {
+        Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
+        List<LichHoc> lstLichHoc = hocSinhService.getAllLichHocById(id);
+        model.addAttribute("lstLichHoc", lstLichHoc);
+         return "hocSinhLichHoc";
     }
 
     @GetMapping("/hocSinhBoSungHoSo")

@@ -5,14 +5,19 @@ import org.springframework.stereotype.Service;
 import project.schoolmanagement.schoolmanagement.entity.Diem;
 import project.schoolmanagement.schoolmanagement.entity.DiemDanh;
 import project.schoolmanagement.schoolmanagement.entity.HocSinh;
+import project.schoolmanagement.schoolmanagement.entity.LichHoc;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryDiem;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryDiemDanh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
+import project.schoolmanagement.schoolmanagement.repository.RepositoryLichHoc;
 
 import java.util.List;
 
 @Service
 public class HocSinhService {
+
+    @Autowired
+    private RepositoryLichHoc repositoryLichHoc;
 
     @Autowired
     private RepositoryHocSinh repositoryHocSinh;
@@ -50,5 +55,10 @@ public class HocSinhService {
     public List<DiemDanh> getAllDiemDanhById(Integer id) {
         List<DiemDanh> lstDiemDanh = repositoryDiemDanh.findByHocSinh_Id(id);
         return lstDiemDanh;
+    }
+
+    public List<LichHoc> getAllLichHocById(Integer id) {
+        List<LichHoc> lstLichHoc = repositoryLichHoc.findLichHocByHocSinh_Id(id);
+        return lstLichHoc;
     }
 }
