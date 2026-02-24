@@ -49,6 +49,35 @@ public class HocSinhController {
         return "hocSinhLogin";
     }
 
+    @GetMapping("hocSinhBangDiemPage")
+    private String directHocSinhBangDiem() { return "hocSinhBangDiem"; }
+
+    @GetMapping("hocSinhDiemDanhPage")
+    private String directHocSinhDiemDanh() {
+        return "hocSinhDiemDanh";
+    }
+
+    @GetMapping("hocSinhLichHocPage")
+    private String directHocSinhLichHoc() {
+        return "hocSinhLichHoc";
+    }
+
+    @GetMapping("hocSinhHoSoPage")
+    private String directHocSinhHoSo() {
+        return "hocSinhHoSo";
+    }
+
+    @GetMapping("hocSinhKhenThuongPage")
+    private String directHocSinhKhenThuong() {
+        return "hocSinhKhenThuong";
+    }
+
+    @GetMapping("hocSinhViPage")
+    private String directHocSinhVi() {
+        return "hocSinhVi";
+    }
+
+
     @GetMapping("/hocSinhMainPage")
     public String directHocSinhPage(HttpSession httpSession, Model model) {
         Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
