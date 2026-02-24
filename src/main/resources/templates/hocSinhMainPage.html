@@ -24,6 +24,7 @@
                 <li><a th:href="@{/hocSinh/hocSinhKhenThuongOage}"><i class="fas fa-heart"></i> Khen thưởng/Kỷ luật</a></li>
                 <li><a th:href="@{/hocSinh/hocSinhHoSoPage}"><i class="fas fa-file-alt"></i> Đợt thu bổ sung hồ sơ</a></li>
                 <li><a th:href="@{/hocSinh/hocSinhViPage}"><i class="fas fa-wallet"></i> Ví sinh viên</a></li>
+                <li><a th:href="@{/hocSinh/dinhVuTrucTuyen}"><i class="fas fa-headset"></i> Dịch vụ trực tuyến</a></li>
             </ul>
         </nav>
     </aside>
@@ -34,7 +35,7 @@
             <div class="user-info">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-bell"></i>
-                <span>Xin chào, <strong>Binh</strong></span>
+                <span>Xin chào, <strong th:text="${hocSinh.getFullName}"></strong></span>
             </div>
         </header>
 

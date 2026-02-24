@@ -1,9 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Bảng điểm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điểm sinh viên - FPT Polytechnic</title>
+    <link rel="stylesheet" th:href="@{/css/hocSinhBangDiem.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+<div class="wrapper">
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/FPT_Polytechnic.png" alt="Logo" width="150">
+        </div>
+        <nav>
+            <ul>
+                <li><a th:href="@{/hocSinh/hocSinhMainPage}"><i class="fas fa-check-square"></i> Thông báo và tin tức</a></li>
+                <li><a  th:href="@{/hocSinh/hocSinhDiemDanh}"><i class="fas fa-calendar-alt"></i> Điểm danh</a></li>
+                <li><a th:href="@{/hocSinh/hocSinhLichHoc}"><i class="fas fa-book-open"></i> Lịch học</a></li>
+                <li><a th:href="@{/hocSinh/hocSinhBangDiem}"><i class="fas fa-bell"></i> Điểm</a></li>
+                <li><a th:href="@{/hocSinh/hocSinhKhenThuong}"><i class="fas fa-heart"></i> Khen thưởng/Kỷ luật</a></li>
+                <li><a th:href="@{/hocSinh/hocSinhBangDiem}"><i class="fas fa-file-alt"></i> Đợt thu bổ sung hồ sơ</a></li>
+                <li><a th:href="@{/hocSinh/hocSinhVi}"><i class="fas fa-wallet"></i> Ví sinh viên</a></li>
+                <li><a th:href="@{/hocSinh/dinhVuTrucTuyen}"><i class="fas fa-headset"></i> Dịch vụ trực tuyến</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="top-bar">
+            <div class="breadcrumb">Bảng điểm theo kỳ / <i class="fas fa-home"></i> • Điểm</div>
+            <div class="user-meta">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-bell"></i>
+                <span>Xin chào, <strong>Binh</strong></span>
+            </div>
+        </header>
+
+        <section class="grade-container">
+            <div class="filter-section">
+                <label>Học kỳ</label>
+            </div>
+
+            <div class="subject-header">
+                1: Lập trình web nâng cao (Java) (JAV201) - SD20309
+            </div>
+
+<!--            <div class="table-actions">-->
+<!--                <button class="btn-tool">Print</button>-->
+<!--                <button class="btn-tool">Copy</button>-->
+<!--                <button class="btn-tool">Excel</button>-->
+<!--                <button class="btn-tool">CSV</button>-->
+<!--                <button class="btn-tool">PDF</button>-->
+<!--            </div>-->
+
+            <table class="grade-table">
+                <thead>
+                <tr>
+                    <th>Môn học</th>
+                    <th>Tên đầu điểm</th>
+                    <th>Trọng số (%)</th>
+                    <th>Điểm</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="d : ${lstBangDiem}">
+                        <td th:text="${d.monHoc}"></td>
+                        <td th:text="${d.tenDauDiem}"></td>
+                        <td th:text="${d.trongSo}"></td>
+                        <td th:text="${d.diem}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
 </body>
 </html>

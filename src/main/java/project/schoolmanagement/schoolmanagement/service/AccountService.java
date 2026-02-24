@@ -15,14 +15,15 @@ public class AccountService {
     RepositoryAccount repositoryAccount;
 
 
-    public Boolean roleValidate(String email) {
-        Account account = repositoryAccount.findAccountByEmail(email);
-        if(account.getEmail().equals("giang vien")) {
-            return true;
-        }else if(account.getEmail().equals("hoc sinh")) {
-            return false;
-        }
-        return null;
-    }
+
+//    public Boolean roleValidate(String email) {
+//        Account account = repositoryAccount.findAccountByEmail(email);
+//        if(account.getEmail().equals("giang vien")) {
+//            return true;
+//        }else if(account.getEmail().equals("hoc sinh")) {
+//            return false;
+//        }
+//        return null;
+//    }
 
 }

@@ -15,11 +15,12 @@ import lombok.Setter;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(unique = true, nullable = false)
     private String email;
 
+    @Column(name = "pass")
     private String pass;
     private String position;
 

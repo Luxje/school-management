@@ -22,8 +22,12 @@
             <input type="password" id="password" th:field="*{password}" placeholder="••••••••" required />
         </div>
 
-        <button type="submit">Đăng nhập</button>
-
+        <button type="submit">
+            <span class="shadow"></span>
+            <span class="edge"></span>
+            <span class="front text"> Click me
+  </span>
+        </button>
         <div th:if="${error}" class="error-msg" th:text="${error}"></div>
     </form>
 </div>
