@@ -18,7 +18,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/hocSinh")
-@SessionAttributes("idHocSinh")
 public class HocSinhController {
 
 
