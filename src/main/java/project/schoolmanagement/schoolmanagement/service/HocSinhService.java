@@ -11,6 +11,7 @@ import project.schoolmanagement.schoolmanagement.repository.RepositoryDiemDanh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryLichHoc;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,12 +39,12 @@ public class HocSinhService {
                 .orElseThrow(() -> new RuntimeException("Student not found with ID: " + id));
     }
 
-    public Boolean validateLogin(String email, String password) {
+    public HocSinh validateLogin(String email, String password) {
         HocSinh hocSinh = repositoryHocSinh.findHocSinhByAccountEmail(email);
         if(hocSinh != null && hocSinh.getAccount().getPass().equals(password)) {
-            return true;
+            return hocSinh;
         }else {
-            return false;
+            return null;
         }
     }
 
@@ -59,6 +60,11 @@ public class HocSinhService {
 
     public List<LichHoc> getAllLichHocById(Integer id) {
         List<LichHoc> lstLichHoc = repositoryLichHoc.findLichHocByHocSinh_Id(id);
+        return lstLichHoc;
+    }
+
+    public List<LichHoc> getAllLichHocByNgayHocAndId(Date ngayHoc, Integer id) {
+        List<LichHoc> lstLichHoc = repositoryLichHoc.findLichHocByNgayHocAndHocSinh_Id(ngayHoc, id);
         return lstLichHoc;
     }
 }

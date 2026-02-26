@@ -13,6 +13,7 @@ import project.schoolmanagement.schoolmanagement.entity.LichHoc;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 import project.schoolmanagement.schoolmanagement.service.HocSinhService;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,16 +29,15 @@ public class HocSinhController {
     private RepositoryHocSinh repositoryHocSinh;
 
 
-
     @PostMapping("/hocSinhLogin")
     public String hocSinhLogin(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession httpSession, Model model) {
-        if(hocSinhService.validateLogin(email,password)) {
-            HocSinh hs = repositoryHocSinh.findHocSinhByAccountEmail(email);
-            Integer currentHocSinhId = hs.getId();
+            HocSinh hocSinh = hocSinhService.validateLogin(email, password);
+        if (hocSinh != null) {
+            Integer currentHocSinhId = hocSinh.getId();
             httpSession.setAttribute("currentHocSinhId", currentHocSinhId);
 
             return "redirect:/hocSinh/hocSinhMainPage";
-        }else {
+        } else {
             model.addAttribute("error", "Invalid Email or Password");
             return "hocSinhLogin";
         }
@@ -50,7 +50,9 @@ public class HocSinhController {
     }
 
     @GetMapping("hocSinhBangDiemPage")
-    private String directHocSinhBangDiem() { return "hocSinhBangDiem"; }
+    private String directHocSinhBangDiem() {
+        return "hocSinhBangDiem";
+    }
 
     @GetMapping("hocSinhDiemDanhPage")
     private String directHocSinhDiemDanh() {
@@ -111,12 +113,25 @@ public class HocSinhController {
         Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
         List<LichHoc> lstLichHoc = hocSinhService.getAllLichHocById(id);
         model.addAttribute("lstLichHoc", lstLichHoc);
-         return "hocSinhLichHoc";
+        return "hocSinhLichHoc";
     }
+
+    @GetMapping("/hocSinhFindLichHoc")
+    private String lichHocSortByNgayHoc(HttpSession httpSession, Model model) {
+        Integer id = (Integer) httpSession.getAttribute("currentHocSinhId");
+        Date ngayHoc = (Date) model.getAttribute("ngayHoc");
+        List<LichHoc> lstLichHoc = hocSinhService.getAllLichHocByNgayHocAndId(ngayHoc,id);
+        model.addAttribute("lstLichHoc", lstLichHoc);
+        return "hocSinhLichHoc";
+    }
+
 
     @GetMapping("/hocSinhBoSungHoSo")
     private String directHocSinhBoSungHoSo() {
         return "hocSinhBoSungHoSo";
     }
-    
+
+
+
+
 }
