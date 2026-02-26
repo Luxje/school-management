@@ -1,13 +1,12 @@
 package project.schoolmanagement.schoolmanagement.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import project.schoolmanagement.schoolmanagement.LoginCredentials.AccountLogin;
+import project.schoolmanagement.schoolmanagement.entity.GiangVien;
 import project.schoolmanagement.schoolmanagement.service.GiangVienService;
 
 @Controller
@@ -18,13 +17,14 @@ public class GiangVienController {
     private GiangVienService giangVienService;
 
     @PostMapping("/giangVienLogin")
-    public String giangVienLogin(@ModelAttribute("giangVienLogin") AccountLogin accountLogin, Model model) {
-        String email = accountLogin.getEmail();
-        String password = accountLogin.getPassword();
-        if(giangVienService.validateLogin(email,password) == true) {
+    public String giangVienLogin(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession httpSession, Model model) {
+        GiangVien giangVien = giangVienService.validateLogin(email, password);
+        if (giangVien != null) {
+            Integer idGiangVien = giangVien.getId();
+            httpSession.setAttribute("currentGiangVienId", idGiangVien);
             return "redirect:/giangVien/giangVienMainPage";
-        }else {
-            model.addAttribute("error", "Invalid Email or Password");
+        } else {
+            model.addAttribute("error", "Sai thông tin đăng nhập");
             return "giangVienLogin";
         }
     }
