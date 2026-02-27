@@ -2,6 +2,7 @@ package project.schoolmanagement.schoolmanagement.service;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.schoolmanagement.schoolmanagement.entity.Account;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryAccount;
@@ -11,6 +12,7 @@ public class AccountService {
     @Autowired
     RepositoryAccount repositoryAccount;
 
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12) ;
 
 
 //    public Boolean roleValidate(String email) {
@@ -23,6 +25,8 @@ public class AccountService {
 //        return null;
 //    }
 
-
+    public String encodePassword(String password) {
+        return bCryptPasswordEncoder.encode(password);
+    }
 
 }
