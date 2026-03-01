@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import project.schoolmanagement.schoolmanagement.LoginCredentials.AccountLogin;
 import project.schoolmanagement.schoolmanagement.entity.Account;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryAccount;
 
@@ -11,6 +12,7 @@ import project.schoolmanagement.schoolmanagement.repository.RepositoryAccount;
 public class AccountService {
     @Autowired
     RepositoryAccount repositoryAccount;
+
 
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12) ;
 
