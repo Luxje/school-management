@@ -24,29 +24,9 @@ public class HocSinhController {
     @Autowired
     private HocSinhService hocSinhService;
 
-    @Autowired
-    private RepositoryHocSinh repositoryHocSinh;
 
 
-    @PostMapping("/hocSinhLogin")
-    public String hocSinhLogin(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession httpSession, Model model) {
-            HocSinh hocSinh = hocSinhService.validateLogin(email, password);
-        if (hocSinh != null) {
-            Integer currentHocSinhId = hocSinh.getId();
-            httpSession.setAttribute("currentHocSinhId", currentHocSinhId);
 
-            return "redirect:/hocSinh/hocSinhMainPage";
-        } else {
-            model.addAttribute("error", "Invalid Email or Password");
-            return "hocSinhLogin";
-        }
-    }
-
-    @GetMapping("/hocSinhLogin")
-    private String directLogin(Model model) {
-        model.addAttribute("hocSinhLogin", new AccountLogin());
-        return "hocSinhLogin";
-    }
 
     @GetMapping("hocSinhBangDiemPage")
     private String directHocSinhBangDiem() {

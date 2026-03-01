@@ -15,6 +15,15 @@ public class AccountService {
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12) ;
 
 
+    public Boolean validateLogin(String email, String password) {
+        Account account = repositoryAccount.findAccountByEmail(email);
+        if(account != null && account.getPass().matches(password)) {
+            return true;
+        }
+        return false;
+    }
+
+
 //    public Boolean roleValidate(String email) {
 //        Account account = repositoryAccount.findAccountByEmail(email);
 //        if(account.getPosition().equals("giang vien")) {
