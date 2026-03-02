@@ -42,12 +42,12 @@ public class MainController {
     @PostMapping("/login")
     public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession httpSession) {
         if (repositoryAccount.findAccountByEmail(email).getPosition().equals("hoc sinh")) {
-            HocSinh hocSinh = accountService.validateLoginHocSinh(email, password);
-            httpSession.setAttribute("currentAccountId", hocSinh.getId());
+            Account account = repositoryAccount.findAccountByEmail(email);
+            httpSession.setAttribute("currentAccountId", account.getId());
             return "redirect:/hocSinh/hocSinhMainPage";
         } else if (repositoryAccount.findAccountByEmail(email).getPosition().equals("giang vien")) {
-            GiangVien giangVien = accountService.validateLoginGiangVien(email, password);
-            httpSession.setAttribute("currentAccountId", giangVien.getId());
+            Account account = repositoryAccount.findAccountByEmail(email);
+            httpSession.setAttribute("currentAccountId", account.getId());
             return "redirect:/giangVien/giangVienMainPage";
         } else {
             model.addAttribute("error", "Invalid Email or password");
