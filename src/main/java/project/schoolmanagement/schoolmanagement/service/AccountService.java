@@ -5,24 +5,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.schoolmanagement.schoolmanagement.entity.Account;
+import project.schoolmanagement.schoolmanagement.entity.GiangVien;
+import project.schoolmanagement.schoolmanagement.entity.HocSinh;
 import project.schoolmanagement.schoolmanagement.repository.RepositoryAccount;
+import project.schoolmanagement.schoolmanagement.repository.RepositoryGiangVien;
+import project.schoolmanagement.schoolmanagement.repository.RepositoryHocSinh;
 
 @Service
 public class AccountService {
     @Autowired
     RepositoryAccount repositoryAccount;
 
+    @Autowired
+    RepositoryGiangVien repositoryGiangVien;
+
+    @Autowired
+    RepositoryHocSinh repositoryHocSinh;
+
+
+
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(12) ;
 
 
-    public Boolean validateLogin(String email, String password) {
-        Account account = repositoryAccount.findAccountByEmail(email);
-        if(account != null && account.getPass().matches(password)) {
-            return true;
+    public HocSinh validateLoginHocSinh(String email, String password) {
+        HocSinh hocSinh = repositoryHocSinh.findHocSinhByAccountEmail(email);
+        if(hocSinh != null && hocSinh.getAccount().getPass().matches(password)) {
+
+            return hocSinh;
         }
-        return false;
+        return null;
     }
 
+    public GiangVien validateLoginGiangVien(String email, String password) {
+        GiangVien giangVien = repositoryGiangVien.findGiangVienByAccountEmail(email);
+        if(giangVien != null && giangVien.getAccount().getPass().matches(password)) {
+
+            return giangVien;
+        }
+        return null;
+    }
 
 //    public Boolean roleValidate(String email) {
 //        Account account = repositoryAccount.findAccountByEmail(email);
