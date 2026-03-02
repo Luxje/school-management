@@ -16,28 +16,15 @@ public class GiangVienController {
     @Autowired
     private GiangVienService giangVienService;
 
-    @PostMapping("/giangVienLogin")
-    public String giangVienLogin(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession httpSession, Model model) {
-        GiangVien giangVien = giangVienService.validateLogin(email, password);
-        if (giangVien != null) {
-            Integer idGiangVien = giangVien.getId();
-            httpSession.setAttribute("currentGiangVienId", idGiangVien);
-            return "redirect:/giangVien/giangVienMainPage";
-        } else {
-            model.addAttribute("error", "Sai thông tin đăng nhập");
-            return "giangVienLogin";
-        }
-    }
 
     @GetMapping("/giangVienMainPage")
-    public String directGiangVienPage() {
-        return "giangVienMainPage";
-    }
+    public String directGiangVienPage(HttpSession httpSession, Model model) {
+        Integer id = (Integer) httpSession.getAttribute("currentAccountId");
+        GiangVien giangVien = giangVienService.getGiangVienById(id);
+        model.addAttribute("giangVienFullName", giangVien.getFullName());
+        model.addAttribute("giangVien", giangVien);
 
-    @GetMapping("/giangVienLogin")
-    private String directLogin(Model model) {
-        model.addAttribute("giangVienLogin", new AccountLogin());
-        return "giangVienLogin";
+        return "giangVienMainPage";
     }
 
 }
