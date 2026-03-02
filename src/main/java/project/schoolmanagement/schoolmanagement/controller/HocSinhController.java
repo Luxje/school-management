@@ -62,7 +62,7 @@ public class HocSinhController {
     @GetMapping("/hocSinhMainPage")
     public String directHocSinhPage(HttpSession httpSession, Model model) {
         Integer id = (Integer) httpSession.getAttribute("currentAccountId");
-        HocSinh hs = hocSinhService.getById(id);
+        HocSinh hs = hocSinhService.getByAccountId(id);
         model.addAttribute("hocSinhFullName", hs.getFullName());
         model.addAttribute("hocSinh", hs);
 
@@ -73,8 +73,10 @@ public class HocSinhController {
     @GetMapping("/hocSinhBangDiem")
     private String directHocSinhBangDiem(HttpSession httpSession, Model model) {
         Integer id = (Integer) httpSession.getAttribute("currentAccountId");
-        List<Diem> lstDiem = hocSinhService.getAllDiemHocSinh(id);
+        HocSinh hs = hocSinhService.getByAccountId(id);
+        List<Diem> lstDiem = hocSinhService.getAllDiemHocSinh(id) ;
         model.addAttribute("lstBangDiem", lstDiem);
+        model.addAttribute("hocSinh", hs);
 
         return "hocSinhBangDiem";
     }

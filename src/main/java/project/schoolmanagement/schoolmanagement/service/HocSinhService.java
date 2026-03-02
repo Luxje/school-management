@@ -39,17 +39,13 @@ public class HocSinhService {
                 .orElseThrow(() -> new RuntimeException("Student not found with ID: " + id));
     }
 
-    public HocSinh validateLogin(String email, String password) {
-        HocSinh hocSinh = repositoryHocSinh.findHocSinhByAccountEmail(email);
-        if(hocSinh != null && hocSinh.getAccount().getPass().equals(password)) {
-            return hocSinh;
-        }else {
-            return null;
-        }
+    public HocSinh getByAccountId(Integer id) {
+        return repositoryHocSinh.findHocSinhByAccount_Id(id);
     }
 
     public List<Diem> getAllDiemHocSinh(Integer id) {
-        List<Diem> lstDiem = repositoryDiem.findDiemByHocSinh_Id(id);
+        HocSinh hocSinh = repositoryHocSinh.findHocSinhByAccount_Id(id);
+        List<Diem> lstDiem = repositoryDiem.findDiemByHocSinh_Id(hocSinh.getId());
         return lstDiem;
     }
 

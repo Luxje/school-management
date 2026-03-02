@@ -24,12 +24,4 @@ public class GiangVienService {
                 .orElseThrow(() -> new RuntimeException("Teacher not found with ID:" + id));
     }
 
-    public GiangVien validateLogin(String email, String password) {
-        GiangVien giangVien = repositoryGiangVien.findGiangVienByAccountEmail(email);
-        if(giangVien != null && giangVien.getAccount().getPass().equals(password)) {
-            return giangVien;
-        }else {
-            return null;
-        }
-    }
 }
