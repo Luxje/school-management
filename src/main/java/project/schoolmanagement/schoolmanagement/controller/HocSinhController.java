@@ -114,7 +114,9 @@ public class HocSinhController {
     }
 
 
+    public void toidanglamgido() {
 
+    }
 
 
 }
