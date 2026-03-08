@@ -18,16 +18,16 @@ public class HibernateConfig {
         Configuration conf = new Configuration();
 
         Properties properties = new Properties();
-        properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServer2016Dialect");
+        properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=school_management_project;encrypt=true;trustServerCertificate=true;");
         properties.put(Environment.USER, "sa");
-        properties.put(Environment.PASS, "12345678");
+        properties.put(Environment.PASS, "123456789");
         properties.put(Environment.SHOW_SQL, "true");
-
-         conf.addAnnotatedClass(LopHoc.class);
-         conf.addAnnotatedClass(HocSinh.class);
-         conf.addAnnotatedClass(GiangVien.class);
+//
+//         conf.addAnnotatedClass(LopHoc.class);
+//         conf.addAnnotatedClass(HocSinh.class);
+//         conf.addAnnotatedClass(GiangVien.class);
         conf.setProperties(properties);
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

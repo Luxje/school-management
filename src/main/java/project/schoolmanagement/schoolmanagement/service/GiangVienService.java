@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class GiangVienService {
 
+
     @Autowired
     RepositoryGiangVien repositoryGiangVien;
 
@@ -23,5 +24,7 @@ public class GiangVienService {
         return repositoryGiangVien.findById(id)
                 .orElseThrow(() -> new RuntimeException("Teacher not found with ID:" + id));
     }
+
+
 
 }

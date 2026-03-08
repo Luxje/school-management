@@ -1,5 +1,6 @@
 package project.schoolmanagement.schoolmanagement.service;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.schoolmanagement.schoolmanagement.entity.Diem;
@@ -63,4 +64,15 @@ public class HocSinhService {
         List<LichHoc> lstLichHoc = repositoryLichHoc.findLichHocByNgayHocAndHocSinh_Id(ngayHoc, id);
         return lstLichHoc;
     }
+
+    public void addHocSinh(HocSinh hocSinh, HttpSession session) {
+        repositoryHocSinh.save(hocSinh);
+        session.setAttribute("message", "Them hoc sinh thanh cong");
+    }
+
+    public void removeHocSinh(HocSinh hocSinh, HttpSession session) {
+        repositoryHocSinh.delete(hocSinh);
+        session.setAttribute("message", "Xoa hoc sinh thanh cong");
+    }
+
 }
